@@ -1,0 +1,97 @@
+$background-color: rgb(245, 245, 245);
+$login-button-color: #1DB954;;
+$login-button-active-color: #1DB920;
+$title-font-size: 24px;
+$title-font-color: #333;
+
+$description-font-size: 16px;
+$description-font-color: #333;
+
+$author-font-size: 13px;
+$author-font-color: #777;
+
+
+#login-container {
+     background: $background-color;
+     position: absolute;
+     height: 100vh;
+     width: 100vw;
+
+     #main-info-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 220px;
+          width: 310px;
+          margin-top: 120px;
+          margin-left: 90px;
+          padding: 6px;
+          border: 1px red solid;
+
+          #description-container {
+               display: flex;
+               flex-direction: column;
+               justify-content: space-evenly;
+               align-items: flex-start;
+               text-align: left;
+               width: 100%;
+               height: 75%;
+               border: 1px green solid;
+
+               .title {
+                    font-size: $title-font-size;
+                    color: $title-font-color;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 650;
+                    border: 1px red solid;
+               }
+               
+               .description {
+                    font-size: $description-font-size;
+                    color: $description-font-color;
+                    font-family: 'Poppins', sans-serif;
+                    border: 1px red solid;
+               }
+               
+               .author {
+                    font-size: $author-font-size;
+                    color: $author-font-color;
+                    font-family: 'Poppins', sans-serif;
+                    font-style: italic;
+                    font-weight: 350;
+                    margin-top: 13px;
+                    border: 1px red solid;
+               }
+          }
+
+          #button-container {
+               display: flex;
+               justify-content: center;
+               width: 100%;
+               height: 20%;
+               border: 1px green solid;
+
+               .login-button {
+                    background: $login-button-color;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 900;
+                    font-size: 14px;
+                    border-radius: 15px;
+                    border: none;
+                    color: #333;
+                    height: 32px;
+                    width: 200px;
+                    cursor: pointer;
+                    outline: none;
+                    align-self: center;
+          
+                    &:active {
+                         transform: scale(.95);
+                         background: $login-button-active-color;
+                    }
+               }
+          }
+     }
+}
+
+
