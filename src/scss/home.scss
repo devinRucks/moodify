@@ -1,0 +1,40 @@
+$offwhite-BGcolor: rgb(225, 225, 225);
+$white-BGcolor: rgb(245, 245, 245);
+
+#home-container {
+     font-family: 'Poppins', sans-serif;
+     background: $offwhite-BGcolor;
+     height: 100vh;
+     width: 100vw;
+   
+
+     #sidebar-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 50px;
+          background: $white-BGcolor;
+          height: 100%;
+          width: 100px;
+          border: 1px red solid;
+
+          .tab {
+               font-size: 15px;
+               margin: 40px 0;
+               cursor: pointer;
+               color: #333;
+               border: 1px red solid;
+          }
+     }
+
+     #content-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          border: 1px red solid;
+     }
+}

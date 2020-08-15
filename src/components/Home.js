@@ -1,37 +1,32 @@
-import React, { useEffect } from 'react';
-import axios from 'axios'
+import React, { useState } from 'react';
+import '../scss/home.scss'
+import MainComponent from './MainComponent'
 // import { Link } from 'react-router-dom'
 
 const Home = () => {
+     const tabs = ['Mood', 'Weather']
+     const [activeTab, setActiveTab] = useState('Mood');
 
-     useEffect(() => {
-          getSongs();
-     }, [])
 
-     const getSongs = async () => {
-          const res = await axios.get('/getSongs');
-          console.log(res.data)
+     const handleTabClick = (e) => {
+          setActiveTab(e.target.id)
      }
-
-     const handleGetAlbums = () => {
-          axios.get('/getAlbums')
-               .then((res) => {
-                    console.log(res.data)
-               })
-     }
-
-     // const handleGetSongs = () => {
-     //      axios.get('/getSongs')
-     //           .then((res) => {
-     //                console.log(res.data)
-     //           })
-     // }
 
      return (
-          <div className="App">
-               <h1>This is the home component</h1>
-               <button onClick={handleGetAlbums}>Get Albums</button>
-               {/* <button onClick={getSongs}>Get Songs</button> */}
+          <div id="home-container">
+               <section id="sidebar-container">
+                    {tabs.map((tab, index) =>
+                         <div className="tab"
+                              key={index}
+                              id={tab}
+                              onClick={handleTabClick}>
+                              {tab}
+                         </div>
+                    )}
+               </section>
+               <section id="content-container">
+                    <MainComponent currentTab={activeTab} />
+               </section>
           </div>
      );
 }
