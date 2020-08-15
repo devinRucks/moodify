@@ -1,5 +1,6 @@
 import React from 'react';
 import '../scss/main-component.scss';
+import MoodSelector from '../components/MoodSelector'
 
 const MainComponent = (props) => {
      const { currentTab } = props;
@@ -24,6 +25,7 @@ const MainComponent = (props) => {
 
      return (
           <section id="container">
+               {(currentTab === 'Mood') && < MoodSelector />}
                <div id="test-text">This is the {currentTab} container</div>
           </section>
      );

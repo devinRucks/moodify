@@ -1,5 +1,5 @@
 $background-color: rgb(245, 245, 245);
-$login-button-color: #1DB954;;
+$spotify-color: #1DB954;
 $login-button-active-color: #1DB920;
 $title-font-size: 24px;
 $title-font-color: #333;
@@ -72,7 +72,7 @@ $author-font-color: #777;
                border: 1px green solid;
 
                .login-button {
-                    background: $login-button-color;
+                    background: $spotify-color;
                     font-family: 'Poppins', sans-serif;
                     font-weight: 900;
                     font-size: 14px;
