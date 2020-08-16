@@ -11,9 +11,9 @@ const Login = () => {
                          <div className="author">A project by Devin Rucks</div>
                     </section>
                     <section id="button-container">
-                         {/* <a href="http://localhost:8888/login"> */}
-                         <button className="login-button">LOGIN WITH SPOTIFY</button>
-                         {/* </a> */}
+                         <a href="http://localhost:8888/login">
+                              <button className="login-button">LOGIN WITH SPOTIFY</button>
+                         </a>
                     </section>
                </div>
           </div>

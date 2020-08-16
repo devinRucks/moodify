@@ -6,9 +6,7 @@ import 'react-rangeslider/lib/index.css'
 
 const MoodSelector = () => {
      const [energyLvl, setEnergyLvl] = useState(0)
-     const [sadLvl, setSadLvl] = useState(0);
      const [happyLvl, setHappyLvl] = useState(0);
-     const [calmLvl, setCalmLvl] = useState(0);
 
      const handleEnergyChange = (value) => {
           setEnergyLvl(value)
@@ -18,14 +16,10 @@ const MoodSelector = () => {
           setHappyLvl(value)
      }
 
-     const handleSadChange = (value) => {
-          setSadLvl(value)
-     }
+     // Energy will directly affect energy levels
+     // Happiness will directly affect valence
+     // If low energy and low happiness, danceability will be below 0.5, above 0.5 if both are high
 
-
-     const handleCalmChange = (value) => {
-          setCalmLvl(value)
-     }
 
      return (
           <section id="mood-selector-container">
@@ -50,27 +44,6 @@ const MoodSelector = () => {
                     />
                </div>
 
-               <div className="slider">
-                    <Slider
-                         min={0}
-                         max={10}
-                         value={sadLvl}
-                         tooltip={true}
-                         orientation="vertical"
-                         onChange={handleSadChange}
-                    />
-               </div>
-
-               <div className="slider">
-                    <Slider
-                         min={0}
-                         max={10}
-                         value={calmLvl}
-                         tooltip={true}
-                         orientation="vertical"
-                         onChange={handleCalmChange}
-                    />
-               </div>
           </section>
      );
 }
