@@ -60,7 +60,6 @@ const MainComponent = (props) => {
      return (
           <section id="container">
                {(currentTab === 'Mood') && < MoodSelector />}
-               <div id="test-text">This is the {currentTab} container</div>
           </section>
      );
 }

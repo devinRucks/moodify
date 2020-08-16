@@ -1,42 +1,37 @@
 $spotify-color: #1DB954;
 
 #mood-selector-container {
+     position: relative;
      display: flex;
      flex-direction: row;
-     justify-content: space-evenly;
-     align-items: center;
+     justify-content: space-around;
+     align-items: flex-end;
+     margin-top: 50px;
      height: 300px;
-     border: 1px green solid;
+     width: 40%;
+     border-left: 3px #333 solid;
+     border-bottom: 3px #333 solid;
+     border-radius: 2px;
+     // border: 1px green solid;
 
-     // The height here needs to be less than the randeslider-vertical height
-     .slider {
+     .y-axis-labels {
+          height: 100%;
           display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 190px;
-          width: 10px;
-          background-color: $spotify-color;
-          // border: 1px blue solid;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          position: absolute;
+          left: -43px;
+          // border: 1px red solid;
+     }
 
-          .rangeslider-vertical {
-               height: 200px;
-               width: 10px;
-
-               background-color: $spotify-color;
-          }
-
-          .rangeslider__fill {
-               width: 100%;
-               background-color: $spotify-color;
-          }
-          .rangeslider__handle {
-               width: 30px;
-               height: 10px;
-               // left: -10px;
-               // border-radius: 50%;
-               outline: none;
-               background-color: #fff;
-               box-shadow: 0 1px 1px #333;
-          }
+     .x-axis-labels {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+          position: absolute;
+          bottom: -43px;
+          // border: 1px red solid;
      }
 }

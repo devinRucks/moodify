@@ -19,14 +19,15 @@ $white-BGcolor: rgb(245, 245, 245);
           background: $white-BGcolor;
           height: 100%;
           width: 100px;
-          border: 1px red solid;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          // border: 1px red solid;
 
           .tab {
                font-size: 15px;
                margin: 40px 0;
                cursor: pointer;
                color: #333;
-               border: 1px red solid;
+               // border: 1px red solid;
           }
      }
 
@@ -35,6 +36,6 @@ $white-BGcolor: rgb(245, 245, 245);
           justify-content: center;
           align-items: center;
           height: 100%;
-          border: 1px red solid;
+          // border: 1px red solid;
      }
 }
