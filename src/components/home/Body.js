@@ -1,21 +1,22 @@
 import React, { useEffect, useContext } from 'react';
-import '../scss/home-content.scss';
-import MoodSelector from './MoodSelector'
-import Track from './Track'
+import '../../scss/body.scss';
+import MoodSelector from '../MoodSelector'
+// import Track from './Track'
 import axios from 'axios'
-import { GlobalContext } from '../GlobalContext';
+import { SidebarStoreContext } from '../../stores/SidebarStore'
+import { observer } from 'mobx-react';
 
-const HomeContent = (props) => {
-     const { currentTab } = props;
-     const { filterValues, setFilterValues } = useContext(GlobalContext)
+const Body = observer(() => {
+     const sidebarStore = useContext(SidebarStoreContext)
 
      useEffect(() => {
           checkToGetTracks()
+          // eslint-disable-next-line
      }, [])
 
 
      const handleCreatePlaylist = () => {
-          console.log(filterValues)
+          console.log("button clicked")
      }
 
      /**
@@ -48,9 +49,9 @@ const HomeContent = (props) => {
      }
 
      return (
-          <section id="main-container">
+          <section id="body-container">
                <section id="mood-weather-container">
-                    {(currentTab === 'Mood') && < MoodSelector />}
+                    {(sidebarStore.activeTab === 'Mood') && < MoodSelector />}
                </section>
 
                <button
@@ -63,6 +64,6 @@ const HomeContent = (props) => {
 
           </section>
      );
-}
+})
 
-export default HomeContent;
+export default Body;

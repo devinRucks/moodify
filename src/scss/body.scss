@@ -2,7 +2,7 @@ $white-BGcolor: rgb(245, 245, 245);
 $spotify-color: #1DB954;
 $spotify-color-light: #1fc75a;
 
-#main-container {
+#body-container {
      background: $white-BGcolor;
      display: flex;
      flex-direction: column;
@@ -10,7 +10,7 @@ $spotify-color-light: #1fc75a;
      height: 100%;
      width: 900px;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     // border: 1px red solid;
+     border: 1px red solid;
 
      #mood-weather-container {
           display: flex;
