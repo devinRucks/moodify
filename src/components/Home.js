@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../scss/home.scss'
 import HomeContent from './HomeContent';
-import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
-import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
-// import { Link } from 'react-router-dom'
+// import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
+// import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
+
 
 const Home = () => {
      const tabs = ['Mood', 'Weather']
@@ -11,6 +11,7 @@ const Home = () => {
 
 
      const handleTabClick = (e) => {
+          console.log(e.target.id)
           setActiveTab(e.target.id)
      }
 
@@ -18,18 +19,12 @@ const Home = () => {
           <div id="home-container">
                <section id="sidebar-container">
                     {tabs.map((tab, index) =>
-                         <section className="tab-container" id={tab} onClick={handleTabClick}>
-                              {tab === 'Mood' &&
-                                   <MoodOutlinedIcon
-                                        style={{ fontSize: 32 }}
-                                   />}
+                         <section className="tab-container">
 
-                              {tab === 'Weather' &&
-                                   <CloudOutlinedIcon
-                                        style={{ fontSize: 32 }}
-                                   />}
-
-                              <div className="tab" key={index}>
+                              <div className="tab"
+                                   key={index}
+                                   id={tab}
+                                   onClick={handleTabClick}>
                                    {tab}
                               </div>
 

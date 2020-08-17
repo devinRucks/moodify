@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import '../scss/home-content.scss';
 import MoodSelector from './MoodSelector'
+import Track from './Track'
 import axios from 'axios'
+import { GlobalContext } from '../GlobalContext';
 
 const HomeContent = (props) => {
      const { currentTab } = props;
+     const { filterValues, setFilterValues } = useContext(GlobalContext)
 
      useEffect(() => {
           checkToGetTracks()
      }, [])
+
+
+     const handleCreatePlaylist = () => {
+          console.log(filterValues)
+     }
 
      /**
       * - Gets updated tracks from server ONLY if more than 24 hours has passed since the past update,
@@ -45,7 +53,13 @@ const HomeContent = (props) => {
                     {(currentTab === 'Mood') && < MoodSelector />}
                </section>
 
-               <button className="create-playlist-button">CREATE PLAYLIST</button>
+               <button
+                    className="create-playlist-button"
+                    onClick={handleCreatePlaylist}>
+                    CREATE PLAYLIST
+               </button>
+
+               {/* < Track /> */}
 
           </section>
      );

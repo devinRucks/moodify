@@ -54,7 +54,10 @@ const CustomSlider = ({ label, value, setValue }) => {
                {/* <Typography gutterBottom>{label}</Typography> */}
                <SpotifyStyleSlider
                     orientation="vertical"
-                    defaultValue={50}
+                    min={0.0}
+                    step={0.1}
+                    max={1.0}
+                    defaultValue={0.5}
                     value={value}
                     onChange={(event, v) => {
                          setValue(v);

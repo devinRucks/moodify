@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../scss/mood-selector.scss';
 import CustomSlider from '../components/CustomSlider'
+import { GlobalContext } from '../GlobalContext';
 
 
 const MoodSelector = () => {
+     const { filterValues, setFilterValues } = useContext(GlobalContext)
      const [energyLvl, setEnergyLvl] = useState(0);
      const [happyLvl, setHappyLvl] = useState(0);
+
+     useEffect(() => {
+          setFilterValues({
+               ...filterValues,
+               valence: happyLvl,
+               danceability: happyLvl / energyLvl,
+               energy: energyLvl
+          })
+     }, [energyLvl, happyLvl])
 
      // Energy will directly affect energy levels
      // Happiness will directly affect valence
