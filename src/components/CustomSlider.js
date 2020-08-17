@@ -6,7 +6,7 @@ import Slider from "@material-ui/core/Slider";
 const SpotifyStyleSlider = withStyles({
      root: {
           color: '#1DB954',
-          height: "100% !important"
+          height: "97% !important"
      },
      thumb: {
           height: 24,
@@ -16,10 +16,10 @@ const SpotifyStyleSlider = withStyles({
           marginTop: -8,
           marginLeft: -12,
           '&:focus, &:hover': {
-               boxShadow: '0px 0px 0px 8px rgba(84, 199, 97, 0.16)'
+               boxShadow: '0px 0px 0px 4px rgba(84, 199, 97, 0.16)'
           },
           '&$active': {
-               boxShadow: '0px 0px 0px 12px rgba(84, 199, 97, 0.16)'
+               boxShadow: '0px 0px 0px 6px rgba(84, 199, 97, 0.16)'
           }
      },
      active: {},
@@ -28,18 +28,18 @@ const SpotifyStyleSlider = withStyles({
      },
      track: {
           height: 8,
-          borderRadius: 4
+          // borderRadius: 4
      },
      rail: {
           height: 8,
-          borderRadius: 4
+          borderRadius: 4,
      },
      vertical: {
           '& $rail': {
-               width: 8
+               width: 10
           },
           '& $track': {
-               width: 8
+               width: 10
           },
           '& $thumb': {
                marginLeft: -8,

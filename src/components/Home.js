@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../scss/home.scss'
-import MainComponent from './MainComponent'
+import HomeContent from './HomeContent';
+import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
+import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
 // import { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -16,16 +18,26 @@ const Home = () => {
           <div id="home-container">
                <section id="sidebar-container">
                     {tabs.map((tab, index) =>
-                         <div className="tab"
-                              key={index}
-                              id={tab}
-                              onClick={handleTabClick}>
-                              {tab}
-                         </div>
+                         <section className="tab-container" id={tab} onClick={handleTabClick}>
+                              {tab === 'Mood' &&
+                                   <MoodOutlinedIcon
+                                        style={{ fontSize: 32 }}
+                                   />}
+
+                              {tab === 'Weather' &&
+                                   <CloudOutlinedIcon
+                                        style={{ fontSize: 32 }}
+                                   />}
+
+                              <div className="tab" key={index}>
+                                   {tab}
+                              </div>
+
+                         </section>
                     )}
                </section>
                <section id="content-container">
-                    <MainComponent currentTab={activeTab} />
+                    <HomeContent currentTab={activeTab} />
                </section>
           </div>
      );
