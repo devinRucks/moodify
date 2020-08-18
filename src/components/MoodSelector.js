@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../scss/moodSelector.scss';
 import CustomSlider from '../components/CustomSlider'
+import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
+import { observer } from 'mobx-react';
 
 
-const MoodSelector = () => {
-     const [energyLvl, setEnergyLvl] = useState(0);
+const MoodSelector = observer(() => {
+     const trackFilterStore = useContext(TrackFilterStoreContext)
      const [happyLvl, setHappyLvl] = useState(0);
+     const [energyLvl, setEnergyLvl] = useState(0);
 
-     // Energy will directly affect energy levels
-     // Happiness will directly affect valence
-     // If low energy and low happiness, danceability will be below 0.5, above 0.5 if both are high
 
+     useEffect(() => {
+          trackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
+          // eslint-disable-next-line
+     }, [happyLvl, energyLvl])
 
 
      return (
@@ -36,6 +40,6 @@ const MoodSelector = () => {
                />
           </section>
      );
-}
+})
 
 export default MoodSelector;
