@@ -4,20 +4,18 @@ import MoodSelector from '../MoodSelector'
 // import Track from './Track'
 import axios from 'axios'
 import { SidebarStoreContext } from '../../stores/SidebarStore'
+import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
 import { observer } from 'mobx-react';
 
 const Body = observer(() => {
      const sidebarStore = useContext(SidebarStoreContext)
+     const trackFilterStore = useContext(TrackFilterStoreContext)
 
      useEffect(() => {
           checkToGetTracks()
           // eslint-disable-next-line
      }, [])
 
-
-     const handleCreatePlaylist = () => {
-          console.log("button clicked")
-     }
 
      /**
       * - Gets updated tracks from server ONLY if more than 24 hours has passed since the past update,
@@ -30,6 +28,7 @@ const Body = observer(() => {
 
                const pastDate = Date.parse(localStorage.getItem('date'))
 
+               getTracks(today)
                // 86400000 milliseconds = 24 hours
                if (today - pastDate > 86400000) {
                     getTracks(today)
@@ -43,6 +42,7 @@ const Body = observer(() => {
 
      const getTracks = async (date) => {
           const res = await axios.get('/getSongs');
+          console.log(res.data)
 
           localStorage.setItem('date', date)
           localStorage.setItem('tracks', JSON.stringify(res.data))
@@ -56,7 +56,7 @@ const Body = observer(() => {
 
                <button
                     className="create-playlist-button"
-                    onClick={handleCreatePlaylist}>
+                    onClick={() => trackFilterStore.createPlaylist()}>
                     CREATE PLAYLIST
                </button>
 
