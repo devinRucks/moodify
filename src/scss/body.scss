@@ -7,10 +7,11 @@ $spotify-color-light: #1fc75a;
      display: flex;
      flex-direction: column;
      align-items: center;
+     overflow-y: auto;
      height: 100%;
      width: 900px;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     border: 1px red solid;
+     // border: 2px green solid;
 
      #mood-weather-container {
           display: flex;
@@ -18,13 +19,13 @@ $spotify-color-light: #1fc75a;
           align-items: center;
           height: 380px;
           width: 100%;
-          border: 1px purple solid;
+          // border: 1px purple solid;
      }
 
      .create-playlist-button {
           background: $spotify-color;
           font-family: 'Poppins', sans-serif;
-          margin-top: 25px;
+          margin-top: 80px;
           font-weight: 900;
           font-size: 14px;
           border-radius: 15px;

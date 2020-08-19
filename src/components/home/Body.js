@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import '../../scss/body.scss';
 import MoodSelector from '../MoodSelector'
-// import Track from './Track'
+import Track from '../Track'
 import axios from 'axios'
 import { SidebarStoreContext } from '../../stores/SidebarStore'
 import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
@@ -28,7 +28,7 @@ const Body = observer(() => {
 
                const pastDate = Date.parse(localStorage.getItem('date'))
 
-               getTracks(today)
+               // getTracks(today)
                // 86400000 milliseconds = 24 hours
                if (today - pastDate > 86400000) {
                     getTracks(today)
@@ -60,7 +60,16 @@ const Body = observer(() => {
                     CREATE PLAYLIST
                </button>
 
-               {/* < Track /> */}
+               {trackFilterStore.filteredTracks.map((track, index) => {
+                    return (
+                         < Track
+                              key={index}
+                              albumCover={track.album_cover}
+                              artist={track.artist}
+                              track={track.track}
+                         />
+                    )
+               })}
 
           </section>
      );

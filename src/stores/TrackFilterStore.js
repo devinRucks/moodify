@@ -16,9 +16,9 @@ class TrackFilterStore {
       * @param {float} energy 
       */
      setFilterValuesFromMood(happiness, energy) {
-          this.valence = happiness;
-          this.energy = energy;
-          this.danceability = ((happiness + energy) / 2)
+          this.valence = parseFloat(happiness.toFixed(3));
+          this.energy = parseFloat(energy.toFixed(3));
+          this.danceability = parseFloat(((happiness + energy) / 2).toFixed(3));
 
           console.log(`valence: ${this.valence}, energy: ${this.energy}, danceability: ${this.danceability}`)
      }
@@ -27,21 +27,22 @@ class TrackFilterStore {
 
      createPlaylist() {
           const allTracks = JSON.parse(localStorage.getItem('tracks'))
-          // console.log(allTracks)
-          // let filteredTracks2 = allTracks.filter((track) => {
-          //      inRange(track.valence, this.valence) &&
-          //           inRange(track.energy, this.energy) &&
-          //           inRange(track.danceability, this.danceability)
-          // })
-          let filteredTracks2 = allTracks.filter((track) => {
+
+          this.filteredTracks = this.filteringAlgorithm(allTracks)
+
+     }
+
+
+     filteringAlgorithm(tracks) {
+          return tracks.filter((track) => {
                return (
-                    track.valence <= (this.valence + 0.300) && track.valence >= (this.valence - 0.300) &&
-                    track.energy <= (this.energy + 0.300) && track.energy >= (this.energy - 0.300) &&
-                    track.danceability <= (this.danceability + 0.300) && track.danceability >= (this.danceability - 0.300)
+                    valueFilter(track.valence, this.valence) &&
+                    valueFilter(track.energy, this.energy) &&
+                    valueFilter(track.danceability, this.danceability)
                )
           })
-          console.log(filteredTracks2)
      }
+
 
      /**
       * TODO:
@@ -52,6 +53,20 @@ class TrackFilterStore {
 
 }
 
+// IDEA: Make filterValues toFixed(2) or even toFixed(1). The less specific these numbers are, the more results you should get.
+const valueFilter = (trackVal, filterVal) => {
+     if (filterVal < 0.100) {
+          return (trackVal <= (0.300))
+     }
+     else if (filterVal < 0.200) {
+          return (trackVal <= (0.450))
+     } else {
+          return (trackVal <= (filterVal + 0.250) && trackVal >= (filterVal - 0.250))
+     }
+}
+
+
+
 decorate(TrackFilterStore, {
      filterValues: observable,
      filteredTracks: observable,
@@ -59,8 +74,6 @@ decorate(TrackFilterStore, {
      createPlaylist: action
 })
 
-const inRange = (trackVal, filterVal) => {
-     return trackVal <= (filterVal + 0.400) && trackVal >= (filterVal - 0.400)
-}
+
 
 export const TrackFilterStoreContext = createContext(new TrackFilterStore());
