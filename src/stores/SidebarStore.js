@@ -2,7 +2,6 @@ import { observable, action, decorate } from 'mobx'
 import { createContext } from 'react'
 
 class SidebarStore {
-     tabs = ['Mood', 'Weather']
      activeTab = 'Mood'
 
      handleTabClick(tabName) {
@@ -13,7 +12,6 @@ class SidebarStore {
 }
 
 decorate(SidebarStore, {
-     tabs: observable,
      activeTab: observable,
      handleTabClick: action
 })

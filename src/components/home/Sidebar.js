@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import '../../scss/sidebar.scss'
+import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
+import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
 import { SidebarStoreContext } from '../../stores/SidebarStore'
 import { observer } from 'mobx-react';
 
@@ -8,18 +10,21 @@ const Home = observer(() => {
 
      return (
           <section id="sidebar-container">
-               {sidebarStore.tabs.map((tab, index) =>
-                    <section key={index} className="tab-container">
 
-                         <div className="tab"
-                              key={index}
-                              id={tab}
-                              onClick={() => sidebarStore.handleTabClick(tab)}>
-                              {tab}
-                         </div>
+               <div id="tab-container"
+                    onClick={() => sidebarStore.handleTabClick('Mood')}
+                    className={sidebarStore.activeTab === 'Mood' ? 'tab-active' : 'tab-inactive'}>
+                    < MoodOutlinedIcon style={{ fontSize: 30 }} />
+                    <div className="tab">Mood</div>
+               </div>
 
-                    </section>
-               )}
+               <div id="tab-container"
+                    onClick={() => sidebarStore.handleTabClick('Weather')}
+                    className={sidebarStore.activeTab === 'Weather' ? 'tab-active' : 'tab-inactive'}>
+                    < CloudOutlinedIcon style={{ fontSize: 30 }} />
+                    <div className="tab">Weather</div>
+               </div>
+
           </section>
      );
 })
