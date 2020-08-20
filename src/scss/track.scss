@@ -3,15 +3,24 @@
      justify-content: flex-start;
      align-items: center;
      margin: 15px 0;
+     padding: 0 20px;
      height: 65px;
      width: 100%;
      // border: 1px blue solid;
+
+     .track-index {
+          font-size: 16px;
+          font-weight: 800;
+          width: 10px;
+          color: #94919d;
+          // border: 1px green solid;
+     }
 
      .album-cover {
           border-radius: 5px;
           margin: 0 15px;
           height: 64px;
-          width: 50px;
+          width: 70px;
           // border: 1px red solid;
      }
 
@@ -23,13 +32,13 @@
           height: 100%;
           // border: 1px blue solid;
 
-          .artist-name {
+          .track-name {
                font-size: 17px;
                font-weight: 600;
                // border: 1px red solid;
           }
 
-          .track-name {
+          .artist-name {
                color: #94919d;
                font-size: 12.5px;
                // border: 1px red solid;

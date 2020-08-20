@@ -1,0 +1,58 @@
+$white-BGcolor: rgb(245, 245, 245);
+$spotify-color: #1DB954;
+$spotify-color-light: #1fc75a;
+
+#body-container {
+     background: $white-BGcolor;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     overflow-y: auto;
+     margin-left: 120px;
+     height: 100%;
+     width: 900px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     // border: 2px green solid;
+
+     #mood-weather-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 50px;
+          height: 260px;
+          width: 100%;
+          // border: 1px purple solid;
+     }
+
+     #button-container {
+          margin-top: 80px;
+          // border: 1px red solid;
+
+          .create-playlist-button {
+               background: $spotify-color;
+               font-family: 'Poppins', sans-serif;
+               font-weight: 900;
+               font-size: 14px;
+               border-radius: 15px;
+               border: none;
+               color: #fff;
+               cursor: pointer;
+               outline: none;
+               align-self: center;
+               height: 32px;
+               width: 200px;
+               transition: all 0.2s ease-in-out;
+               // border: 1px purple solid;
+     
+               &:hover {
+                    transform: scale(1.03);
+                    background: $spotify-color-light;
+               }
+     
+               &:active {
+                    transform: scale(0.96);
+               }
+          }
+     }
+
+}

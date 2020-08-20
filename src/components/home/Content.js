@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import '../../scss/body.scss';
+import '../../scss/content.scss';
 import MoodSelector from '../MoodSelector'
 import Track from '../Track'
 import axios from 'axios'
@@ -54,16 +54,19 @@ const Body = observer(() => {
                     {(sidebarStore.activeTab === 'Mood') && < MoodSelector />}
                </section>
 
-               <button
-                    className="create-playlist-button"
-                    onClick={() => trackFilterStore.createPlaylist()}>
-                    CREATE PLAYLIST
-               </button>
+               <section id="button-container">
+                    <button
+                         className="create-playlist-button"
+                         onClick={() => trackFilterStore.createPlaylist()}>
+                         CREATE PLAYLIST
+                    </button>
+               </section>
 
                {trackFilterStore.filteredTracks.map((track, index) => {
                     return (
                          < Track
                               key={index}
+                              index={index + 1}
                               albumCover={track.album_cover}
                               artist={track.artist}
                               track={track.track}

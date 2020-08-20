@@ -1,7 +1,8 @@
 $white-BGcolor: rgb(245, 245, 245);
 
 #sidebar-container {
-     position: absolute;
+     position: fixed;
+     z-index: 1000;
      top: 0;
      left: 0;
      display: flex;

@@ -1,17 +1,12 @@
 $offwhite-BGcolor: rgb(225, 225, 225);
 $white-BGcolor: rgb(245, 245, 245);
 
-#home-container {
-     font-family: 'Poppins', sans-serif;
+
+#center-content {
+     display: flex;
+     justify-content: center;
+     align-items: center;
      background: $offwhite-BGcolor;
      height: 100vh;
-     width: 100vw;
-
-     #content-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-          // border: 1px red solid;
-     }
+     border: 1px red solid;
 }
