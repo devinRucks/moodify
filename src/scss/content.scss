@@ -1,6 +1,4 @@
-$white-BGcolor: rgb(245, 245, 245);
-$spotify-color: #1DB954;
-$spotify-color-light: #1fc75a;
+@import '../scss/_variables.scss';
 
 #body-container {
      background: $white-BGcolor;
@@ -29,13 +27,12 @@ $spotify-color-light: #1fc75a;
           // border: 1px red solid;
 
           .create-playlist-button {
-               background: $spotify-color;
-               font-family: 'Poppins', sans-serif;
+               background: $spotify-green;
                font-weight: 900;
                font-size: 14px;
                border-radius: 15px;
                border: none;
-               color: #fff;
+               color: $white-text;
                cursor: pointer;
                outline: none;
                align-self: center;
@@ -46,13 +43,22 @@ $spotify-color-light: #1fc75a;
      
                &:hover {
                     transform: scale(1.03);
-                    background: $spotify-color-light;
+                    background: $spotify-green-light;
                }
      
                &:active {
                     transform: scale(0.96);
                }
           }
+     }
+
+     .content-separator {
+          display: block;
+          width: 800px;
+          margin-top: 50px;
+          margin-bottom: 50px;
+          border: .5px #b8b5c1 solid;
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
      }
 
 }

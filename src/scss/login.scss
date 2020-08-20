@@ -1,18 +1,8 @@
-$background-color: rgb(245, 245, 245);
-$spotify-color: #1DB954;
-$login-button-active-color: #1DB920;
-$title-font-size: 24px;
-$title-font-color: #333;
-
-$description-font-size: 16px;
-$description-font-color: #333;
-
-$author-font-size: 13px;
-$author-font-color: #777;
+@import '../scss/variables.scss';
 
 
 #login-container {
-     background: $background-color;
+     background: $white-BGcolor;
      position: absolute;
      height: 100vh;
      width: 100vw;
@@ -40,7 +30,7 @@ $author-font-color: #777;
 
                .title {
                     font-size: $title-font-size;
-                    color: $title-font-color;
+                    color: $dark-text;
                     font-family: 'Poppins', sans-serif;
                     font-weight: 650;
                     border: 1px red solid;
@@ -48,15 +38,14 @@ $author-font-color: #777;
                
                .description {
                     font-size: $description-font-size;
-                    color: $description-font-color;
+                    color: $dark-text;
                     font-family: 'Poppins', sans-serif;
                     border: 1px red solid;
                }
                
                .author {
                     font-size: $author-font-size;
-                    color: $author-font-color;
-                    font-family: 'Poppins', sans-serif;
+                    color: $light-text;
                     font-style: italic;
                     font-weight: 350;
                     margin-top: 13px;
@@ -72,13 +61,12 @@ $author-font-color: #777;
                border: 1px green solid;
 
                .login-button {
-                    background: $spotify-color;
-                    font-family: 'Poppins', sans-serif;
+                    background: $spotify-green;
                     font-weight: 900;
                     font-size: 14px;
                     border-radius: 15px;
                     border: none;
-                    color: #333;
+                    color: $dark-text;
                     height: 32px;
                     width: 200px;
                     cursor: pointer;
@@ -87,7 +75,7 @@ $author-font-color: #777;
           
                     &:active {
                          transform: scale(.95);
-                         background: $login-button-active-color;
+                         background: $spotify-green-light;
                     }
                }
           }

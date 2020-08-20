@@ -1,6 +1,4 @@
-$offwhite-BGcolor: rgb(225, 225, 225);
-$white-BGcolor: rgb(245, 245, 245);
-
+@import '../scss/variables.scss';
 
 #center-content {
      display: flex;
@@ -8,5 +6,5 @@ $white-BGcolor: rgb(245, 245, 245);
      align-items: center;
      background: $offwhite-BGcolor;
      height: 100vh;
-     border: 1px red solid;
+     // border: 1px red solid;
 }

@@ -1,3 +1,5 @@
+@import '../scss/_variables.scss';
+
 #track-container {
      display: flex;
      justify-content: flex-start;
@@ -12,7 +14,7 @@
           font-size: 16px;
           font-weight: 800;
           width: 28px;
-          color: #94919d;
+          color: $light-text;
           // border: 1px green solid;
      }
 
@@ -39,7 +41,7 @@
           }
 
           .artist-name {
-               color: #94919d;
+               color: $light-text;
                font-size: 12.5px;
                // border: 1px red solid;
           }

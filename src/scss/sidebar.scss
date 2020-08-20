@@ -1,5 +1,4 @@
-$white-BGcolor: rgb(245, 245, 245);
-$offwhite-BGcolor: rgb(225, 225, 225);
+@import '../scss/_variables.scss';
 
 #sidebar-container {
      position: fixed;
@@ -31,7 +30,7 @@ $offwhite-BGcolor: rgb(225, 225, 225);
           .tab {
                font-size: 15px;
                margin: 5px 0;
-               color: #333;
+               color: $dark-text;
                // border: 1px red solid;
           }
      }

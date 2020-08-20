@@ -62,6 +62,8 @@ const Body = observer(() => {
                     </button>
                </section>
 
+               <hr className="content-separator" />
+
                {trackFilterStore.filteredTracks.map((track, index) => {
                     return (
                          < Track
