@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from 'react';
-import '../../scss/content.scss';
-import MoodSelector from '../MoodSelector'
-import Track from '../Track'
-import axios from 'axios'
-import { SidebarStoreContext } from '../../stores/SidebarStore'
-import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
+import '../scss/content.scss';
+import Mood from './Mood';
+import Weather from './Weather';
+import Track from './Track';
+import axios from 'axios';
+import { SidebarStoreContext } from '../stores/SidebarStore';
+import { TrackFilterStoreContext } from '../stores/TrackFilterStore';
 import { observer } from 'mobx-react';
 
 const Body = observer(() => {
@@ -51,7 +52,8 @@ const Body = observer(() => {
      return (
           <section id="body-container">
                <section id="mood-weather-container">
-                    {(sidebarStore.activeTab === 'Mood') && < MoodSelector />}
+                    {(sidebarStore.activeTab === 'Mood') && < Mood />}
+                    {(sidebarStore.activeTab === 'Weather') && < Weather />}
                </section>
 
                <section id="button-container">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../scss/moodSelector.scss';
+import '../scss/mood.scss';
 import CustomSlider from '../components/CustomSlider'
 import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
 import { observer } from 'mobx-react';
@@ -18,7 +18,7 @@ const MoodSelector = observer(() => {
 
 
      return (
-          <section id="mood-selector-container">
+          <section id="mood-container">
                <section className="y-axis-labels">
                     <div className="high-label">High</div>
                     <div className="low-label">Low</div>

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import '../../scss/sidebar.scss'
+import '../scss/sidebar.scss'
 import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
 import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
-import { SidebarStoreContext } from '../../stores/SidebarStore'
+import { SidebarStoreContext } from '../stores/SidebarStore'
 import { observer } from 'mobx-react';
 
 const Home = observer(() => {
