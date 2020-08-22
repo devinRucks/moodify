@@ -7,12 +7,18 @@ import { observer } from 'mobx-react';
 
 const MoodSelector = observer(() => {
      const trackFilterStore = useContext(TrackFilterStoreContext)
-     const [happyLvl, setHappyLvl] = useState(0);
-     const [energyLvl, setEnergyLvl] = useState(0);
+     const [happyLvl, setHappyLvl] = useState(parseFloat(sessionStorage.happyLvl));
+     const [energyLvl, setEnergyLvl] = useState(parseFloat(sessionStorage.energyLvl));
 
 
      useEffect(() => {
+          console.log("test")
+
+          sessionStorage.setItem('happyLvl', happyLvl.toString())
+          sessionStorage.setItem('energyLvl', energyLvl.toString())
+
           trackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
+
           // eslint-disable-next-line
      }, [happyLvl, energyLvl])
 

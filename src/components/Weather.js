@@ -32,7 +32,7 @@ const Weather = observer(() => {
 
      useEffect(() => {
           if ("geolocation" in navigator) {
-               if (sessionStorage.length === 0) {
+               if (sessionStorage.weatherData === undefined) {
                     getCoordsAndWeather();
                } else {
                     const sessionData = JSON.parse(sessionStorage.weatherData)
