@@ -1,0 +1,21 @@
+@import '../scss/_variables.scss';
+
+#loading-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     // border: 1px red solid;
+
+     #text-container {
+          height: 20%;
+          // border: 1px red solid;
+     }
+
+     .loading-text {
+          font-size: 22px;
+          font-weight: 600;
+          color: $dark-text;
+     }
+}

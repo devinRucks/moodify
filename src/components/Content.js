@@ -9,8 +9,8 @@ import { TrackFilterStoreContext } from '../stores/TrackFilterStore';
 import { observer } from 'mobx-react';
 
 const Body = observer(() => {
-     const sidebarStore = useContext(SidebarStoreContext)
-     const trackFilterStore = useContext(TrackFilterStoreContext)
+     const SidebarStore = useContext(SidebarStoreContext)
+     const TrackFilterStore = useContext(TrackFilterStoreContext)
 
      useEffect(() => {
           checkToGetTracks()
@@ -52,21 +52,22 @@ const Body = observer(() => {
      return (
           <section id="body-container">
                <section id="mood-weather-container">
-                    {(sidebarStore.activeTab === 'Mood') && < Mood />}
-                    {(sidebarStore.activeTab === 'Weather') && < Weather />}
+                    {(SidebarStore.activeTab === 'Mood') && < Mood />}
+                    {(SidebarStore.activeTab === 'Weather') && < Weather />}
+
                </section>
 
                <section id="button-container">
                     <button
                          className="create-playlist-button"
-                         onClick={() => trackFilterStore.createPlaylist()}>
+                         onClick={() => TrackFilterStore.createPlaylist()}>
                          CREATE PLAYLIST
                     </button>
                </section>
 
                <hr className="content-separator" />
 
-               {trackFilterStore.filteredTracks.map((track, index) => {
+               {TrackFilterStore.filteredTracks.map((track, index) => {
                     return (
                          < Track
                               key={index}
