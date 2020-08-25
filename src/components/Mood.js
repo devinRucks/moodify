@@ -7,15 +7,22 @@ import { observer } from 'mobx-react';
 
 const MoodSelector = observer(() => {
      const trackFilterStore = useContext(TrackFilterStoreContext)
-     const [happyLvl, setHappyLvl] = useState(parseFloat(sessionStorage.happyLvl));
-     const [energyLvl, setEnergyLvl] = useState(parseFloat(sessionStorage.energyLvl));
+     const [happyLvl, setHappyLvl] = useState(parseFloat(sessionStorage.getItem('happyLvl')) || 0.5);
+     const [energyLvl, setEnergyLvl] = useState(parseFloat(sessionStorage.getItem('energyLvl')) || 0.5);
+     // const [happyLvl, setHappyLvl] = useState(0.5);
+     // const [energyLvl, setEnergyLvl] = useState(0.5);
 
 
      useEffect(() => {
-          console.log("test")
 
           sessionStorage.setItem('happyLvl', happyLvl.toString())
           sessionStorage.setItem('energyLvl', energyLvl.toString())
+
+          // setHappyLvl(parseFloat(sessionStorage.happyLvl))
+          // setEnergyLvl(parseFloat(sessionStorage.energyLvl))
+
+          // console.log(`happyLvl: ${sessionStorage.happyLvl}`)
+          // console.log(`energyLvl: ${sessionStorage.energyLvl}`)
 
           trackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
 
