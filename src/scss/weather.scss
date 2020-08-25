@@ -1,8 +1,61 @@
 @import '../scss/variables';
 
-#weather-container {
-     text-align: center;
+#content-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
      height: 90%;
      width: 90%;
-     border: 2px green solid;
+     // border: 2px green solid;
+
+     #weather-container {
+          display: flex;
+          justify-content: center;
+          height: 100%;
+          width: 50%;
+          min-width: 350px;
+          border: 2px $dark-text solid;
+          border-radius: 15px;
+          // border: 1px red solid;
+
+          #icon-container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               width: 50%;
+               height: 85%;
+
+               border: 1px green solid;
+          }
+
+          #details-container {
+               display: flex;
+               flex-direction: column;
+               justify-content: space-around;
+               // align-items: center;
+               width: 50%;
+               border: 1px purple solid;
+
+               .temp {
+                    align-self: center;
+                    font-size: 50px;
+                    border: 1px purple solid;
+               }
+
+               .description {
+                    border: 1px purple solid;
+                    font-size: 18px;
+               }
+
+               .city {
+                    border: 1px purple solid;
+                    // justify-self: center;
+               }
+
+               .state {
+                    border: 1px purple solid;
+                    // justify-self: center;
+               }
+          }
+     }
 }

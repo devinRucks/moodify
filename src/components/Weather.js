@@ -4,7 +4,8 @@ import axios from 'axios'
 import Loading from './Loading'
 import { LoadingStoreContext } from '../stores/LoadingStore'
 import '../scss/weather.scss';
-// import Snowy from '../svgs/snowy-4.svg'
+import Cloudy from '../svgs/cloudy.svg'
+import Thunder from '../svgs/thunder.svg'
 
 /**
  * - Check if user gave permission
@@ -103,15 +104,22 @@ const Weather = observer(() => {
 
 
      return (
-          <section id="weather-container">
+          <section id="content-container">
                {(LoadingStore.loadingWeather || LoadingStore.loadingCoords) &&
                     < Loading />
                }
                {(!LoadingStore.loadingWeather && !LoadingStore.loadingCoords) &&
-                    <>
-                         <h1>Weather Component</h1>
-                         <h2>{weatherData.city}</h2>
-                    </>
+                    <section id="weather-container">
+                         <section id="details-container">
+                              <div className="description">{weatherData.description}</div>
+                              <div className="temp">{weatherData.temp}</div>
+                              <div className="city">{weatherData.city}</div>
+                              <div className="state">{weatherData.state}</div>
+                         </section>
+                         <section id="icon-container">
+                              <img src={Cloudy} style={{ height: 190, width: 190 }} alt="cloudy" />
+                         </section>
+                    </section>
                }
           </section>
      )
