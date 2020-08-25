@@ -18,12 +18,6 @@ const MoodSelector = observer(() => {
           sessionStorage.setItem('happyLvl', happyLvl.toString())
           sessionStorage.setItem('energyLvl', energyLvl.toString())
 
-          // setHappyLvl(parseFloat(sessionStorage.happyLvl))
-          // setEnergyLvl(parseFloat(sessionStorage.energyLvl))
-
-          // console.log(`happyLvl: ${sessionStorage.happyLvl}`)
-          // console.log(`energyLvl: ${sessionStorage.energyLvl}`)
-
           trackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
 
           // eslint-disable-next-line

@@ -67,6 +67,7 @@ const Weather = observer(() => {
      const getWeatherData = async (lat, long) => {
           await axios.post('/weather', { lat, long })
                .then((res) => {
+                    console.log(res.data)
                     setWeatherData({
                          ...weatherData,
                          city: res.data.city,
