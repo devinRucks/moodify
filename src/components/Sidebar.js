@@ -1,33 +1,50 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../scss/sidebar.scss'
+import { NavLink } from 'react-router-dom'
 import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
 import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
-import { SidebarStoreContext } from '../stores/SidebarStore'
 import { observer } from 'mobx-react';
 
-const Home = observer(() => {
-     const sidebarStore = useContext(SidebarStoreContext)
+const linkStyle = {
+     'textDecoration': 'none',
+     'display': 'flex',
+     'flexDirection': 'column',
+     'justifyContent': 'space-evenly',
+     'alignItems': 'center',
+     'margin': '20px 0',
+     'cursor': 'pointer',
+     'height': '70px',
+     'width': '100%',
+     'color': '#333'
+}
+
+
+const Sidebar = observer(() => {
 
      return (
           <section id="sidebar-container">
 
-               <div id="tab-container"
-                    onClick={() => sidebarStore.handleTabClick('Mood')}
-                    className={sidebarStore.activeTab === 'Mood' ? 'tab-active' : 'tab-inactive'}>
-                    < MoodOutlinedIcon style={{ fontSize: 30 }} />
-                    <div className="tab">Mood</div>
-               </div>
+               <NavLink to="/mood"
+                    activeClassName="tab-active"
+                    style={linkStyle}>
 
-               <div id="tab-container"
-                    onClick={() => sidebarStore.handleTabClick('Weather')}
-                    className={sidebarStore.activeTab === 'Weather' ? 'tab-active' : 'tab-inactive'}>
+                    < MoodOutlinedIcon style={{ fontSize: 30 }} />
+                    <div>Mood</div>
+
+               </NavLink>
+
+               <NavLink to="/weather"
+                    activeClassName="tab-active"
+                    style={linkStyle}>
+
                     < CloudOutlinedIcon style={{ fontSize: 30 }} />
-                    <div className="tab">Weather</div>
-               </div>
+                    <div >Weather</div>
+
+               </NavLink>
 
           </section>
      );
 })
 
 
-export default Home;
+export default Sidebar;

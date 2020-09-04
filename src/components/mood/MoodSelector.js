@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../scss/mood.scss';
-import CustomSlider from '../components/CustomSlider'
-import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
+import '../../scss/mood.scss';
+import CustomSlider from './CustomSlider'
+import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
 import { observer } from 'mobx-react';
 
 

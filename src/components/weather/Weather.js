@@ -1,30 +1,23 @@
 import React, { useContext } from 'react';
-import '../scss/content.scss';
-import Mood from './Mood';
-import Weather from './Weather';
-import Track from './Track';
-import { SidebarStoreContext } from '../stores/SidebarStore';
-import { TrackFilterStoreContext } from '../stores/TrackFilterStore';
+import '../../scss/content.scss';
+
+import WeatherSelector from './WeatherSelector';
+import CreatePlaylistButton from '../CreatePlaylistButton'
+import Track from '../Track';
+import { TrackFilterStoreContext } from '../../stores/TrackFilterStore';
 import { observer } from 'mobx-react';
 
-const Body = observer(() => {
-     const SidebarStore = useContext(SidebarStoreContext)
+const Weather = observer(() => {
      const TrackFilterStore = useContext(TrackFilterStoreContext)
 
      return (
           <section id="body-container">
                <section id="mood-weather-container">
-                    {(SidebarStore.activeTab === 'Mood') && < Mood />}
-                    {(SidebarStore.activeTab === 'Weather') && < Weather />}
-
+                    < WeatherSelector />
                </section>
 
                <section id="button-container">
-                    <button
-                         className="create-playlist-button"
-                         onClick={() => TrackFilterStore.createPlaylist()}>
-                         CREATE PLAYLIST
-                    </button>
+                    < CreatePlaylistButton />
                </section>
 
                <hr className="content-separator" />
@@ -45,4 +38,4 @@ const Body = observer(() => {
      );
 })
 
-export default Body;
+export default Weather;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
+import '../../scss/weather.scss';
 import { observer } from 'mobx-react';
 import axios from 'axios'
-import Loading from './Loading'
-import { LoadingStoreContext } from '../stores/LoadingStore'
-import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
-import '../scss/weather.scss';
-import Cloudy from '../svgs/cloudy.svg'
-import Thunder from '../svgs/thunder.svg'
+import Loading from '../Loading'
+import { LoadingStoreContext } from '../../stores/LoadingStore'
+import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
+import Cloudy from '../../svgs/cloudy.svg'
+// import Thunder from '../svgs/thunder.svg'
 
 /**
  * - Check if user gave permission
@@ -20,7 +20,7 @@ import Thunder from '../svgs/thunder.svg'
  */
 
 
-const Weather = observer(() => {
+const WeatherSelector = observer(() => {
      const trackFilterStore = useContext(TrackFilterStoreContext)
      const LoadingStore = useContext(LoadingStoreContext)
      const [weatherData, setWeatherData] = useState({
@@ -135,4 +135,4 @@ const Weather = observer(() => {
 })
 
 
-export default Weather;
+export default WeatherSelector;

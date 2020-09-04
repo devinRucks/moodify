@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import '../scss/loading-screen.scss'
+import React, { useEffect, useContext } from 'react';
+import '../scss/content.scss';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
-import HashLoader from "react-spinners/HashLoader";
+import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
+import { observer } from 'mobx-react';
+// import HashLoader from "react-spinners/HashLoader";
 
-const LoadingScreen = () => {
-     const [loading, setLoading] = useState(true);
+
+const CreatePlaylistButton = observer(() => {
+     const TrackFilterStore = useContext(TrackFilterStoreContext)
+
+     // const [loading, setLoading] = useState(true);
 
      useEffect(() => {
           checkToGetTracks()
@@ -29,7 +33,7 @@ const LoadingScreen = () => {
                     getTracks(today)
                     console.log("It has been more than 24 hours")
                }
-               setLoading(false)
+               // setLoading(false)
           } else {
                getTracks(today)
                console.log("Date didnt exist")
@@ -39,28 +43,19 @@ const LoadingScreen = () => {
      const getTracks = async (date) => {
           const res = await axios.get('/getSongs');
 
-          setLoading(false)
+          // setLoading(false)
 
           localStorage.setItem('date', date)
           localStorage.setItem('tracks', JSON.stringify(res.data))
      }
 
      return (
-          <React.Fragment>
-               {!loading &&
-                    <Redirect to='/home' />
-               }
-               {loading &&
-                    <section id="loading-container">
+          <button
+               className="create-playlist-button"
+               onClick={() => TrackFilterStore.createPlaylist()}>
+               CREATE PLAYLIST
+          </button>
+     );
+})
 
-                         <HashLoader
-                              loading={true}
-                              color={'#1DB954'}
-                         />
-                    </section>
-               }
-          </React.Fragment>
-     )
-}
-
-export default LoadingScreen;
+export default CreatePlaylistButton;
