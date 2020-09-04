@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import axios from 'axios'
 import Loading from './Loading'
 import { LoadingStoreContext } from '../stores/LoadingStore'
+import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
 import '../scss/weather.scss';
 import Cloudy from '../svgs/cloudy.svg'
 import Thunder from '../svgs/thunder.svg'
@@ -20,6 +21,7 @@ import Thunder from '../svgs/thunder.svg'
 
 
 const Weather = observer(() => {
+     const trackFilterStore = useContext(TrackFilterStoreContext)
      const LoadingStore = useContext(LoadingStoreContext)
      const [weatherData, setWeatherData] = useState({
           city: '',
@@ -50,6 +52,11 @@ const Weather = observer(() => {
           }
           // eslint-disable-next-line
      }, [])
+
+     useEffect(() => {
+          trackFilterStore.setFilterValuesFromWeather(weatherData)
+          // eslint-disable-next-line
+     }, [weatherData])
 
 
 

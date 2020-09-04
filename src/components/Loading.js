@@ -16,9 +16,6 @@ const Loading = observer(() => {
                     {LoadingStore.loadingWeather &&
                          <div className="loading-text">Getting Weather Data...</div>
                     }
-                    {LoadingStore.loadingTracks &&
-                         <div className="loading-text">Getting Tracks...</div>
-                    }
                </section>
                <HashLoader
                     loading={true}

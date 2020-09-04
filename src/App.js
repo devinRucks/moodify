@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import Login from './components/Login'
+import Login from './components/Login'
 import Home from './components/Home'
+import LoadingScreen from './components/LoadingScreen'
 import './App.scss';
 
 const App = () => {
@@ -10,9 +11,10 @@ const App = () => {
 		< Router>
 			<div className="App">
 				<Switch>
-					{/* <Route exact path="/" component={Login} /> */}
-					<Route exact path='/' component={Home} />
-					{/* <Route path='/home' component={Home} /> */}
+					<Route exact path="/" component={Login} />
+					{/* <Route exact path='/' component={Home} /> */}
+					<Route path="/loading" component={LoadingScreen} />
+					<Route path='/home' component={Home} />
 					<Route path="*" component={() => "404 NOT FOUND"} />
 				</Switch>
 			</div>

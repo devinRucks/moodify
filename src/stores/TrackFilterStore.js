@@ -11,7 +11,7 @@ class TrackFilterStore {
      filteredTracks = [];
 
      /**
-      * Takes in the happiness and energy levels from moodSelector component.
+      * Takes in the happiness and energy levels from mood component.
       * @param {float} happiness 
       * @param {float} energy 
       */
@@ -23,6 +23,21 @@ class TrackFilterStore {
           console.log(`valence: ${this.valence}, energy: ${this.energy}, danceability: ${this.danceability}`)
      }
 
+     /**
+      * Takes in weather object from state in Weather component
+      * @param {Object} weather 
+      */
+     setFilterValuesFromWeather(weather) {
+          if (weather.desciption === "Overcast") {
+               this.value = 0.2
+               this.energy = 0.2;
+               this.danceability = 0.2;
+          } else {
+               this.value = 0.8;
+               this.energy = 0.8;
+               this.danceability = 0.8;
+          }
+     }
 
 
      createPlaylist() {
