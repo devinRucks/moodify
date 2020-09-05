@@ -4,6 +4,7 @@ import { createContext } from 'react'
 class LoadingStore {
      loadingWeather = false
      loadingCoords = false
+     loadingTracks = false
 
      setWeatherLoading(loading) {
           this.loadingWeather = loading
@@ -11,6 +12,10 @@ class LoadingStore {
 
      setCoordsLoading(loading) {
           this.loadingCoords = loading
+     }
+
+     setTracksLoading(loading) {
+          this.loadingTracks = loading;
      }
 }
 

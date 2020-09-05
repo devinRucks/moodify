@@ -1,20 +1,24 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import '../scss/content.scss';
-import axios from 'axios';
 import { TrackFilterStoreContext } from '../stores/TrackFilterStore'
+import { LoadingStoreContext } from '../stores/LoadingStore'
 import { observer } from 'mobx-react';
-// import HashLoader from "react-spinners/HashLoader";
+import axios from 'axios';
 
 
-const CreatePlaylistButton = observer(() => {
+const CreatePlaylistButton = observer((props) => {
      const TrackFilterStore = useContext(TrackFilterStoreContext)
+     const LoadingStore = useContext(LoadingStoreContext)
 
-     // const [loading, setLoading] = useState(true);
 
-     useEffect(() => {
-          checkToGetTracks()
-          // eslint-disable-next-line
-     }, [])
+     const handleClick = async () => {
+          console.log("Getting Tracks...")
+          await checkToGetTracks()
+          console.log("Received Tracks...")
+          TrackFilterStore.createPlaylist(props.currentTab)
+     }
+
+
 
      /**
       * - Gets updated tracks from server ONLY if more than 24 hours has passed since the past update,
@@ -22,37 +26,37 @@ const CreatePlaylistButton = observer(() => {
       * - The reasoning behind this is to reduce unnecessary api calls. Most likely the data wont change at all within 24 hours.
       */
      const checkToGetTracks = async () => {
+          // 86400000 milliseconds = 24 hours
+          const oneDay = 86400000
+
           const today = new Date();
+
           if (localStorage.hasOwnProperty('date')) {
 
                const pastDate = Date.parse(localStorage.getItem('date'))
 
-               // getTracks(today)
-               // 86400000 milliseconds = 24 hours
-               if (today - pastDate > 86400000) {
-                    getTracks(today)
-                    console.log("It has been more than 24 hours")
+               if (today - pastDate > oneDay) {
+                    await getTracks(today)
                }
-               // setLoading(false)
           } else {
-               getTracks(today)
-               console.log("Date didnt exist")
+               await getTracks(today)
           }
      }
 
      const getTracks = async (date) => {
-          const res = await axios.get('/getSongs');
-
-          // setLoading(false)
+          LoadingStore.setTracksLoading(true)
+          const res = await axios.get('/getSongs')
+          LoadingStore.setTracksLoading(false)
 
           localStorage.setItem('date', date)
           localStorage.setItem('tracks', JSON.stringify(res.data))
      }
 
+
      return (
           <button
                className="create-playlist-button"
-               onClick={() => TrackFilterStore.createPlaylist()}>
+               onClick={handleClick}>
                CREATE PLAYLIST
           </button>
      );

@@ -2,13 +2,19 @@ import { observable, action, decorate } from 'mobx'
 import { createContext } from 'react'
 
 class TrackFilterStore {
-     filterValues = {
+     moodFilterValues = {
+          valence: 0,
+          energy: 0,
+          danceability: 0
+     }
+     weatherFilterValues = {
           valence: 0,
           energy: 0,
           danceability: 0
      }
 
-     filteredTracks = [];
+     moodFilteredTracks = [];
+     weatherFilteredTracks = [];
 
      /**
       * Takes in the happiness and energy levels from mood component.
@@ -16,11 +22,11 @@ class TrackFilterStore {
       * @param {float} energy 
       */
      setFilterValuesFromMood(happiness, energy) {
-          this.valence = parseFloat(happiness.toFixed(3));
-          this.energy = parseFloat(energy.toFixed(3));
-          this.danceability = parseFloat(((happiness + energy) / 2).toFixed(3));
+          this.moodFilterValues.valence = parseFloat(happiness.toFixed(3));
+          this.moodFilterValues.energy = parseFloat(energy.toFixed(3));
+          this.moodFilterValues.danceability = parseFloat(((happiness + energy) / 2).toFixed(3));
 
-          console.log(`valence: ${this.valence}, energy: ${this.energy}, danceability: ${this.danceability}`)
+          console.log(`valence: ${this.moodFilterValues.valence}, energy: ${this.moodFilterValues.energy}, danceability: ${this.moodFilterValues.danceability}`)
      }
 
      /**
@@ -29,42 +35,38 @@ class TrackFilterStore {
       */
      setFilterValuesFromWeather(weather) {
           if (weather.desciption === "Overcast") {
-               this.value = 0.2
-               this.energy = 0.2;
-               this.danceability = 0.2;
+               this.weatherFilterValues.value = 0.2
+               this.weatherFilterValues.energy = 0.2;
+               this.weatherFilterValues.danceability = 0.2;
           } else {
-               this.value = 0.8;
-               this.energy = 0.8;
-               this.danceability = 0.8;
+               this.weatherFilterValues.value = 0.8;
+               this.weatherFilterValues.energy = 0.8;
+               this.weatherFilterValues.danceability = 0.8;
           }
      }
 
 
-     createPlaylist() {
+     createPlaylist(currentTab) {
           const allTracks = JSON.parse(localStorage.getItem('tracks'))
 
-          this.filteredTracks = this.filteringAlgorithm(allTracks)
+          if (currentTab === "mood") {
+               this.moodFilteredTracks = this.filteringAlgorithm(allTracks, this.moodFilterValues)
+          } else if (currentTab === "weather") {
+               this.weatherFilteredTracks = this.filteringAlgorithm(allTracks, this.weatherFilterValues)
+          }
 
      }
 
 
-     filteringAlgorithm(tracks) {
+     filteringAlgorithm(tracks, filterValues) {
           return tracks.filter((track) => {
                return (
-                    valueFilter(track.valence, this.valence) &&
-                    valueFilter(track.energy, this.energy) &&
-                    valueFilter(track.danceability, this.danceability)
+                    valueFilter(track.valence, filterValues.valence) &&
+                    valueFilter(track.energy, filterValues.energy) &&
+                    valueFilter(track.danceability, filterValues.danceability)
                )
           })
      }
-
-
-     /**
-      * TODO:
-      * - Use this store for the create playlist button as well as weather component.
-      * - For the create playlist button, when it is clicked, it will call function inside here that will use the current filterValues to filter out the tracks from localStorage and then return the array of objects, aka the custom playlist.
-      * - For the weather component, it will have a similar function as setFilterValuesFromMood, but instead of taking in happiness and energy levels, it will take in the temp and current weather (sunny, rainy, snowy, etc).
-      */
 
 }
 
@@ -83,9 +85,12 @@ const valueFilter = (trackVal, filterVal) => {
 
 
 decorate(TrackFilterStore, {
-     filterValues: observable,
-     filteredTracks: observable,
+     moodFilterValues: observable,
+     weatherFilterValues: observable,
+     moodFilteredTracks: observable,
+     weatherFilteredTracks: observable,
      setFilterValuesFromMood: action,
+     setFilterValuesFromWeather: action,
      createPlaylist: action
 })
 

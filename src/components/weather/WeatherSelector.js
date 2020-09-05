@@ -8,17 +8,6 @@ import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
 import Cloudy from '../../svgs/cloudy.svg'
 // import Thunder from '../svgs/thunder.svg'
 
-/**
- * - Check if user gave permission
- * - Check if there is weather data in session, if there is, load the data, if not do the following: 
- * - Display loading symbol if they did, error msg if they didnt
- * - Get lat and long
- * - Send lat and long to api
- * - Once response is recieved, remove loading symbol
- * - Store data in session
- * - Display data
- */
-
 
 const WeatherSelector = observer(() => {
      const trackFilterStore = useContext(TrackFilterStoreContext)
@@ -113,7 +102,7 @@ const WeatherSelector = observer(() => {
      return (
           <section id="content-container">
                {(LoadingStore.loadingWeather || LoadingStore.loadingCoords) &&
-                    < Loading />
+                    < Loading toLoad={"weather"} />
                }
                {(!LoadingStore.loadingWeather && !LoadingStore.loadingCoords) &&
                     <section id="weather-container">

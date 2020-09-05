@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../../scss/mood.scss';
+import '../../scss/mood-selector.scss';
 import CustomSlider from './CustomSlider'
 import { TrackFilterStoreContext } from '../../stores/TrackFilterStore'
 import { observer } from 'mobx-react';
 
 
 const MoodSelector = observer(() => {
-     const trackFilterStore = useContext(TrackFilterStoreContext)
+     const TrackFilterStore = useContext(TrackFilterStoreContext)
      const [happyLvl, setHappyLvl] = useState(parseFloat(sessionStorage.getItem('happyLvl')) || 0.5);
      const [energyLvl, setEnergyLvl] = useState(parseFloat(sessionStorage.getItem('energyLvl')) || 0.5);
 
 
-
      useEffect(() => {
-
           sessionStorage.setItem('happyLvl', happyLvl.toString())
           sessionStorage.setItem('energyLvl', energyLvl.toString())
 
-          trackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
+          TrackFilterStore.setFilterValuesFromMood(happyLvl, energyLvl)
 
           // eslint-disable-next-line
      }, [happyLvl, energyLvl])
