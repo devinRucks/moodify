@@ -106,14 +106,22 @@ const WeatherSelector = observer(() => {
                }
                {(!LoadingStore.loadingWeather && !LoadingStore.loadingCoords) &&
                     <section id="weather-container">
+
                          <section id="details-container">
+
+                              <section id="location-container">
+                                   <div className="city-state">{weatherData.city}, {weatherData.state}</div>
+                                   <hr className="content-separator" />
+                                   <div className="date">Saturday, 5 September</div>
+                              </section >
+
                               <div className="description">{weatherData.description}</div>
                               <div className="temp">{weatherData.temp}</div>
-                              <div className="city">{weatherData.city}</div>
-                              <div className="state">{weatherData.state}</div>
+
                          </section>
+
                          <section id="icon-container">
-                              <img src={Cloudy} style={{ height: 170, width: 190 }} alt="cloudy" />
+                              <img src={Cloudy} style={{ height: 190, width: 190 }} alt="cloudy" />
                          </section>
                     </section>
                }
