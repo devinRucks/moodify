@@ -12,13 +12,9 @@ const CreatePlaylistButton = observer((props) => {
 
 
      const handleClick = async () => {
-          console.log("Getting Tracks...")
           await checkToGetTracks()
-          console.log("Received Tracks...")
           TrackFilterStore.createPlaylist(props.currentTab)
      }
-
-
 
      /**
       * - Gets updated tracks from server ONLY if more than 24 hours has passed since the past update,
@@ -55,6 +51,7 @@ const CreatePlaylistButton = observer((props) => {
 
      return (
           <button
+               disabled={(LoadingStore.loadingCoords || LoadingStore.loadingWeather) && props.currentTab === "weather"}
                className="create-playlist-button"
                onClick={handleClick}>
                CREATE PLAYLIST
