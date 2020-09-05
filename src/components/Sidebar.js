@@ -15,7 +15,7 @@ const linkStyle = {
      'cursor': 'pointer',
      'height': '70px',
      'width': '100%',
-     'color': '#333'
+     'color': '#eee'
 }
 
 

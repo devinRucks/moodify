@@ -1,64 +1,115 @@
 @import '../scss/_variables.scss';
 
-#body-container {
-     background: $white-BGcolor;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
+// NOTE:
+// To change to dark background, create a background div that has
+// width 100vw and height 100vh, z-index -1000 and contains #body-container
+
+#background {
+     background: $darkMode-black;
      overflow-y: auto;
-     margin-left: 110px;
-     height: 100%;
-     width: 900px;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     // border: 2px green solid;
+     height: 100vh;
+     width: 100vw;
 
-     #mood-weather-container {
+     #body-container {
+          background: $darkMode-blue;
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-          margin-top: 50px;
-          height: 260px;
-          width: 100%;
-          // border: 1px purple solid;
-     }
+          overflow-y: auto;
+          margin-left: 110px;
+          min-height: 100vh;
+          width: 900px;
+          overflow-y: auto;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          // border: 2px green solid;
 
-     #button-container {
-          margin-top: 80px;
-          // border: 1px red solid;
+          #mood-weather-button-container {
+               position: relative;
+               z-index: 50000;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-around;
+               align-items: center;
+               background: $darkMode-black;
+               height: 500px;
+               width: 100%;
+               clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+               -webkit-box-shadow: 0px 24px 40px 0px #1c1b1b; 
+               box-shadow: 0px 24px 40px 0px #1c1b1b;
+               // border: 1px green solid;
 
-          .create-playlist-button {
-               background: $spotify-green;
-               font-weight: 900;
-               font-size: 14px;
-               border-radius: 15px;
-               border: none;
-               color: $white-text;
-               cursor: pointer;
-               outline: none;
-               align-self: center;
-               height: 32px;
-               width: 200px;
-               transition: all 0.2s ease-in-out;
-               // border: 1px purple solid;
-     
-               &:hover {
-                    transform: scale(1.03);
-                    background: $spotify-green-light;
+               #mood-weather-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 260px;
+                    width: 100%;
+                    // border: 1px purple solid;
                }
+          
+               #button-container {
+                    margin-top: 15px;
+   
+                    .create-playlist-button {
+                         position: relative;
+                         background: none;
+                         color: $darkMode-lightest;
+                         text-transform: uppercase;
+                         text-decoration: none;
+                         border: 0.2em solid $darkMode-light-blue;
+                         padding: 0.5em 1em;
+                         cursor: pointer;
+                         outline: none;
      
-               &:active {
-                    transform: scale(0.96);
+                         &::before {
+                              content: "";
+                              display: block;
+                              position: absolute;
+                              width: 10%;
+                              background: #222;
+                              height: 0.3em;
+                              right: 20%;
+                              top: -0.21em;
+                              transform: skewX(-45deg);
+                              -webkit-transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+                              transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+                         }
+                         &::after {
+                              content: "";
+                              display: block;
+                              position: absolute;
+                              width: 10%;
+                              background: #222;
+                              height: 0.3em;
+                              left: 20%;
+                              bottom: -0.25em;
+                              transform: skewX(45deg);
+                              -webkit-transition: all 0.45 cubic-bezier(0.86, 0, 0.07, 1);
+                              transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+                         }
+                         &:hover {
+                              &::before {
+                                   right: 80%;
+                              }
+                         &::after {
+                                   left: 80%;
+                              }
+                         }
+                    }
                }
+
+
           }
-     }
 
-     .content-separator {
-          display: block;
-          width: 95%;
-          margin-top: 50px;
-          margin-bottom: 50px;
-          border: .5px #cfcdd5 solid;
-          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
-     }
 
+          .content-separator {
+               display: block;
+               width: 95%;
+               margin-top: 50px;
+               margin-bottom: 50px;
+               border: .5px #cfcdd5 solid;
+               box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+          }
+
+     }
 }

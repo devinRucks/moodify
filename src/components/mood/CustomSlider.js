@@ -5,7 +5,7 @@ import Slider from "@material-ui/core/Slider";
 
 const SpotifyStyleSlider = withStyles({
      root: {
-          color: '#1DB954',
+          color: '#00adb5',
           height: "97% !important"
      },
      thumb: {

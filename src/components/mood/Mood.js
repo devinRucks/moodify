@@ -15,34 +15,39 @@ const Mood = observer(() => {
      const LoadingStore = useContext(LoadingStoreContext)
 
      return (
-          <section id="body-container">
-               <section id="mood-weather-container">
-                    < MoodSelector />
+          <section id="background">
+               <section id="body-container">
+                    <section id="mood-weather-button-container">
+
+                         <section id="mood-weather-container">
+                              < MoodSelector />
+                         </section>
+
+                         <section id="button-container">
+                              < CreatePlaylistButton currentTab={"mood"} />
+                         </section>
+
+                    </section>
+
+                    {/* <hr className="content-separator" /> */}
+                    {LoadingStore.loadingTracks
+                         ?
+                         < Loading toLoad={"tracks"} />
+                         :
+                         TrackFilterStore.moodFilteredTracks.map((track, index) => {
+                              return (
+                                   < Track
+                                        key={index}
+                                        index={index + 1}
+                                        albumCover={track.album_cover}
+                                        artist={track.artist}
+                                        track={track.track}
+                                   />
+                              )
+                         })
+                    }
+
                </section>
-
-               <section id="button-container">
-                    < CreatePlaylistButton currentTab={"mood"} />
-               </section>
-
-               <hr className="content-separator" />
-
-               {LoadingStore.loadingTracks
-                    ?
-                    < Loading toLoad={"tracks"} />
-                    :
-                    TrackFilterStore.moodFilteredTracks.map((track, index) => {
-                         return (
-                              < Track
-                                   key={index}
-                                   index={index + 1}
-                                   albumCover={track.album_cover}
-                                   artist={track.artist}
-                                   track={track.track}
-                              />
-                         )
-                    })
-               }
-
           </section>
      );
 })

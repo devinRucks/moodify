@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import '../../scss/weather.scss';
+import '../../scss/weather-selector.scss';
 import { observer } from 'mobx-react';
 import axios from 'axios'
 import Loading from '../Loading'
@@ -113,7 +113,7 @@ const WeatherSelector = observer(() => {
                               <div className="state">{weatherData.state}</div>
                          </section>
                          <section id="icon-container">
-                              <img src={Cloudy} style={{ height: 190, width: 190 }} alt="cloudy" />
+                              <img src={Cloudy} style={{ height: 170, width: 190 }} alt="cloudy" />
                          </section>
                     </section>
                }

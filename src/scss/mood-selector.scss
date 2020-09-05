@@ -1,5 +1,7 @@
 @import '../scss/_variables.scss';
 
+
+
 #mood-container {
      position: relative;
      display: flex;
@@ -8,8 +10,8 @@
      align-items: flex-end;
      height: 100%;
      width: 40%;
-     border-left: 3px #333 solid;
-     border-bottom: 3px #333 solid;
+     border-left: 3px $light-text solid;
+     border-bottom: 3px $light-text solid;
      border-radius: 2px;
      // border: 2px green solid;
 
@@ -20,7 +22,8 @@
           justify-content: space-between;
           align-items: flex-end;
           position: absolute;
-          left: -43px;
+          left: -50px;
+          color: $lighter-text;
           // border: 1px red solid;
      }
 
@@ -31,6 +34,8 @@
           align-items: flex-start;
           position: absolute;
           bottom: -43px;
+          color: $lighter-text;
           // border: 1px red solid;
      }
+
 }
