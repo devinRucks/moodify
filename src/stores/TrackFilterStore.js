@@ -30,18 +30,20 @@ class TrackFilterStore {
      }
 
      /**
-      * Takes in weather object from state in Weather component
-      * @param {Object} weather 
+      * Takes in weather description from object state in Weather component
+      * @param {String} weather 
       */
      setFilterValuesFromWeather(weather) {
-          if (weather.desciption === "Overcast") {
-               this.weatherFilterValues.value = 0.2
-               this.weatherFilterValues.energy = 0.2;
-               this.weatherFilterValues.danceability = 0.2;
-          } else {
+          if (
+               weather === "Sunny" || weather === "Partly cloudy" ||
+               weather === "Clear" || weather === "Snowy") {
                this.weatherFilterValues.value = 0.8;
                this.weatherFilterValues.energy = 0.8;
                this.weatherFilterValues.danceability = 0.8;
+          } else {
+               this.weatherFilterValues.value = 0.2
+               this.weatherFilterValues.energy = 0.2;
+               this.weatherFilterValues.danceability = 0.2;
           }
      }
 

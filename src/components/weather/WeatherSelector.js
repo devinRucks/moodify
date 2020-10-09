@@ -51,7 +51,7 @@ const WeatherSelector = observer(() => {
      }, [])
 
      useEffect(() => {
-          trackFilterStore.setFilterValuesFromWeather(weatherData)
+          trackFilterStore.setFilterValuesFromWeather(weatherData.description)
           // eslint-disable-next-line
      }, [weatherData])
 
