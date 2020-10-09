@@ -13,7 +13,7 @@
           display: flex;
           justify-content: center;
           min-width: 350px;
-          border: 1.5px $darkMode-light-blue solid;
+          border: 2px $darkMode-light-blue solid;
           border-radius: 15px;
           height: 100%;
           width: 65%;
@@ -37,7 +37,6 @@
                border-bottom-left-radius: 13px;
                border-top-left-radius: 13px;
                clip-path: polygon(0 0, 100% 0, 74% 100%, 0% 100%);
-               // border: 1px green solid;
 
                #location-container {
                     position: relative;
@@ -56,7 +55,7 @@
                          font-weight: 500;
                     }
 
-                    .content-separator {
+                    .content-separator-vert {
                          display: block;
                          height: 85%;
                          margin: 5px 0;
@@ -67,21 +66,61 @@
 
                }
 
-
-
-               .temp {
-                    font-weight: 300;
+               #description-container {
+                    display: flex;
+                    position: relative;
+                    flex-direction: column;
+                    justify-content: space-evenly;
                     align-self: center;
-                    font-size: 54px;
-                    // border: 1px purple solid;
-               }
+                    top: -25px;
+                    left: -30px;
+                    width: 240px;
+                    height: 150px;
+                    // border: 2px red solid;
 
-               .description {
+                    #desc-temp-container {
+                         display: flex;
+                         justify-content: space-between;
+                         // border: 2px blue solid;
 
-                    font-weight: 300;
-                    align-self: center;
-                    // border: 1px purple solid;
-                    font-size: 18px;
+                         .temp {
+                              font-weight: 300;
+                              align-self: flex-end;
+                              font-size: 62px;
+                              // border: 1px purple solid;
+                         }
+          
+                         .description {
+                              font-weight: 500;
+                              align-self: flex-end;
+                              font-size: 18px;
+                              margin-bottom: 10px;
+                              // border: 1px purple solid;
+                         }
+
+                         .degree-symbol {
+                              position: relative;
+                              left: -8px;
+                              top: -3px;
+                              font-size: 25px;
+                              font-weight: 500;
+                         }
+                    }
+
+                    .content-separator-horiz {
+                         display: block;
+                         height: 1px;
+                         margin: 1px 0;
+                         border: 0.10px #cfcdd5 solid;
+                         opacity: .6;
+                         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+                    }
+
+                    #wind-container {
+                         display: flex;
+                         justify-content: space-evenly;
+                         // border: 2px green solid;
+                    }
                }
           }
      }
