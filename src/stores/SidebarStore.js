@@ -6,7 +6,6 @@ class SidebarStore {
 
      handleTabClick(tabName) {
           this.activeTab = tabName;
-          console.log(tabName)
      }
 
 }

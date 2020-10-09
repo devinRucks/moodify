@@ -51,7 +51,7 @@ const CreatePlaylistButton = observer((props) => {
 
      return (
           <button
-               disabled={(LoadingStore.loadingCoords || LoadingStore.loadingWeather) && props.currentTab === "weather"}
+               disabled={(LoadingStore.loadingCoords || LoadingStore.loadingWeather) && props.currentTab === "Weather"}
                className="create-playlist-button"
                onClick={handleClick}>
                CREATE PLAYLIST

@@ -113,10 +113,10 @@ const WeatherSelector = observer(() => {
 
      return (
           <section id="content-container">
-               {(LoadingStore.loadingWeather || LoadingStore.loadingCoords) &&
+               {(LoadingStore.loadingWeather || LoadingStore.loadingCoords)
+                    ?
                     < Loading toLoad={"weather"} />
-               }
-               {(!LoadingStore.loadingWeather && !LoadingStore.loadingCoords) &&
+                    :
                     <section id="weather-container">
 
                          <section id="details-container">

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../scss/sidebar.scss'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
 import MoodOutlinedIcon from '@material-ui/icons/MoodOutlined';
+import { SidebarStoreContext } from '../stores/SidebarStore'
 import { observer } from 'mobx-react';
 
 const linkStyle = {
@@ -20,27 +21,28 @@ const linkStyle = {
 
 
 const Sidebar = observer(() => {
+     const SidebarStore = useContext(SidebarStoreContext)
 
      return (
           <section id="sidebar-container">
 
-               <NavLink to="/mood"
-                    activeClassName="tab-active"
-                    style={linkStyle}>
+               <div
+                    style={linkStyle}
+                    onClick={() => SidebarStore.handleTabClick("Mood")}>
 
                     < MoodOutlinedIcon style={{ fontSize: 30 }} />
                     <div>Mood</div>
 
-               </NavLink>
+               </div>
 
-               <NavLink to="/weather"
-                    activeClassName="tab-active"
-                    style={linkStyle}>
+               <div
+                    style={linkStyle}
+                    onClick={() => SidebarStore.handleTabClick("Weather")}>
 
                     < CloudOutlinedIcon style={{ fontSize: 30 }} />
                     <div >Weather</div>
 
-               </NavLink>
+               </div>
 
           </section>
      );

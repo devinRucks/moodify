@@ -25,18 +25,17 @@ class TrackFilterStore {
           this.moodFilterValues.valence = parseFloat(happiness.toFixed(3));
           this.moodFilterValues.energy = parseFloat(energy.toFixed(3));
           this.moodFilterValues.danceability = parseFloat(((happiness + energy) / 2).toFixed(3));
-
-          console.log(`valence: ${this.moodFilterValues.valence}, energy: ${this.moodFilterValues.energy}, danceability: ${this.moodFilterValues.danceability}`)
      }
 
      /**
-      * Takes in weather description from object state in Weather component
+      * Takes in weather description from object state in Weather component.
+      * Makes mood positive if the weather is clear/sunny/partly cloudy/snowy.
+      * Any other weather description will make mood less positive.
       * @param {String} weather 
       */
      setFilterValuesFromWeather(weather) {
-          if (
-               weather === "Sunny" || weather === "Partly cloudy" ||
-               weather === "Clear" || weather === "Snowy") {
+          if (weather === "Sunny" || weather === "Partly cloudy"
+               || weather === "Clear" || weather === "Snowy") {
                this.weatherFilterValues.value = 0.8;
                this.weatherFilterValues.energy = 0.8;
                this.weatherFilterValues.danceability = 0.8;
@@ -51,9 +50,9 @@ class TrackFilterStore {
      createPlaylist(currentTab) {
           const allTracks = JSON.parse(localStorage.getItem('tracks'))
 
-          if (currentTab === "mood") {
+          if (currentTab === "Mood") {
                this.moodFilteredTracks = this.filteringAlgorithm(allTracks, this.moodFilterValues)
-          } else if (currentTab === "weather") {
+          } else if (currentTab === "Weather") {
                this.weatherFilteredTracks = this.filteringAlgorithm(allTracks, this.weatherFilterValues)
           }
 
